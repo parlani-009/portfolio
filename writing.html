@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Writing — Rahul Parlani</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080810;--surface:#0F0F1A;--surface2:#16161F;
+  --amber:#F59E0B;--purple:#7C6AF6;
+  --cream:#EEEAE0;--cream-dim:rgba(238,234,224,0.55);
+  --muted:rgba(238,234,224,0.35);--border:rgba(238,234,224,0.07);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:999}
+
+/* NAV */
+nav{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:4px;background:rgba(15,15,26,0.7);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:100px;padding:6px 6px 6px 20px}
+.nav-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;color:var(--cream);margin-right:8px;letter-spacing:-0.3px;text-decoration:none}
+.nav-back{font-size:13px;color:var(--muted);text-decoration:none;padding:7px 14px;border-radius:100px;transition:color 0.2s,background 0.2s}
+.nav-back:hover{color:var(--cream);background:rgba(238,234,224,0.06)}
+.nav-cta{background:var(--amber);color:#080810;font-size:13px;font-weight:600;padding:8px 18px;border-radius:100px;text-decoration:none;margin-left:4px;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.85}
+
+/* LIST PAGE */
+.list-page{max-width:900px;margin:0 auto;padding:120px 40px 100px}
+.page-header{margin-bottom:64px}
+.page-label{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;margin-bottom:20px}
+.page-label::before{content:'';width:24px;height:1px;background:var(--amber)}
+.page-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;color:var(--cream);letter-spacing:-2px;line-height:1.05;margin-bottom:16px}
+.page-sub{font-size:16px;color:var(--cream-dim);font-weight:300;line-height:1.7;max-width:500px}
+
+/* FILTER TABS */
+.filter-tabs{display:flex;gap:8px;margin-bottom:40px;flex-wrap:wrap}
+.tab{font-size:13px;color:var(--muted);border:1px solid var(--border);padding:7px 18px;border-radius:100px;cursor:pointer;transition:color 0.2s,border-color 0.2s,background 0.2s;background:transparent}
+.tab:hover{color:var(--cream);border-color:rgba(238,234,224,0.15)}
+.tab.active{color:var(--cream);border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.06)}
+
+/* WRITING CARDS */
+.writing-list{display:flex;flex-direction:column;gap:16px}
+.w-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px 36px;cursor:pointer;transition:border-color 0.25s,transform 0.25s;position:relative;overflow:hidden}
+.w-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background 0.3s}
+.w-card:hover{border-color:rgba(238,234,224,0.12);transform:translateY(-2px)}
+.w-card:hover::before{background:var(--amber)}
+.w-card.featured::before{background:var(--amber)}
+.w-card.soon{opacity:0.5;cursor:default}
+.w-card.soon:hover{transform:none;border-color:var(--border)}
+.w-card.soon::before{display:none}
+.w-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
+.w-card-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.wc-badge{font-size:10px;font-weight:500;padding:3px 10px;border-radius:100px;letter-spacing:0.06em;text-transform:uppercase}
+.badge-case{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);color:var(--amber)}
+.badge-article{background:rgba(124,106,246,0.1);border:1px solid rgba(124,106,246,0.2);color:#a78bfa}
+.badge-soon{background:rgba(238,234,224,0.05);border:1px solid var(--border);color:var(--muted)}
+.read-time{font-size:12px;color:var(--muted)}
+.w-card-arrow{font-size:18px;color:var(--muted);transition:color 0.2s,transform 0.2s}
+.w-card:hover .w-card-arrow{color:var(--amber);transform:translate(3px,-3px)}
+.w-card-title{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;color:var(--cream);letter-spacing:-0.5px;line-height:1.2;margin-bottom:10px}
+.w-card-excerpt{font-size:14px;color:var(--cream-dim);line-height:1.7;font-weight:300;margin-bottom:20px}
+.w-card-tags{display:flex;gap:8px;flex-wrap:wrap}
+.w-tag{font-size:11px;color:var(--muted);border:1px solid var(--border);padding:3px 10px;border-radius:100px}
+
+/* POST VIEW */
+.post-view{display:none;max-width:760px;margin:0 auto;padding:120px 40px 100px}
+.post-view.active{display:block}
+.list-page.hidden{display:none}
+.post-back{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);cursor:pointer;margin-bottom:48px;transition:color 0.2s;background:none;border:none;padding:0}
+.post-back:hover{color:var(--cream)}
+.post-meta-row{display:flex;align-items:center;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.post-hero{width:100%;aspect-ratio:16/7;background:var(--surface);border:1px solid var(--border);border-radius:16px;margin-bottom:48px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;letter-spacing:0.06em;position:relative;overflow:hidden}
+.post-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(245,158,11,0.04) 0%,transparent 60%)}
+.post-h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:var(--cream);letter-spacing:-1.5px;line-height:1.1;margin-bottom:24px}
+.post-intro{font-size:18px;color:var(--cream-dim);line-height:1.8;font-weight:300;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid var(--border)}
+.post-body h2{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:700;color:var(--cream);letter-spacing:-0.5px;margin:48px 0 16px}
+.post-body p{font-size:16px;color:var(--cream-dim);line-height:1.85;font-weight:300;margin-bottom:20px}
+.post-body strong{color:var(--cream);font-weight:500}
+.post-body code{font-family:'Courier New',monospace;font-size:13px;background:var(--surface2);border:1px solid var(--border);padding:2px 8px;border-radius:4px;color:var(--amber)}
+.post-body pre{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;overflow-x:auto;margin:24px 0}
+.post-body pre code{background:none;border:none;padding:0;font-size:14px;line-height:1.7;color:var(--cream-dim)}
+.post-body ul{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:8px}
+.post-body ul li{display:grid;grid-template-columns:16px 1fr;gap:8px;font-size:15px;color:var(--cream-dim);line-height:1.7;font-weight:300}
+.post-body ul li::before{content:"→";color:var(--amber);font-size:12px;margin-top:4px}
+.post-img{width:100%;aspect-ratio:16/9;background:var(--surface);border:1px solid var(--border);border-radius:12px;margin:32px 0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;letter-spacing:0.06em}
+.post-callout{background:rgba(245,158,11,0.05);border-left:3px solid var(--amber);border-radius:0 12px 12px 0;padding:20px 24px;margin:32px 0}
+.post-callout p{margin:0;color:var(--cream-dim);font-size:15px}
+
+@media(max-width:768px){
+  .list-page,.post-view{padding:100px 20px 80px}
+  .w-card{padding:24px 20px}
+  .w-card-title{font-size:18px}
+}
+@media(max-width:480px){
+  nav{padding:5px 5px 5px 14px}
+  .nav-back{padding:6px 10px;font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Parlani</a>
+  <a href="index.html" class="nav-back">&#8592; Back to portfolio</a>
+  <a href="index.html#contact" class="nav-cta">Contact</a>
+</nav>
+
+<!-- LIST PAGE -->
+<div class="list-page" id="listPage">
+  <div class="page-header">
+    <div class="page-label">Writing</div>
+    <h1 class="page-title">Case studies<br>&amp; articles</h1>
+    <p class="page-sub">Deep dives into things I've built — architecture decisions, performance lessons, and patterns from production systems.</p>
+  </div>
+
+  <div class="filter-tabs">
+    <div class="tab active" onclick="filterPosts('all', this)">All</div>
+    <div class="tab" onclick="filterPosts('case-study', this)">Case Studies</div>
+    <div class="tab" onclick="filterPosts('article', this)">Articles</div>
+  </div>
+
+  <div class="writing-list" id="writingList">
+
+    <div class="w-card featured" data-type="case-study" onclick="openPost('newsletter-pipeline')">
+      <div class="w-card-top">
+        <div class="w-card-meta">
+          <span class="wc-badge badge-case">Case Study</span>
+          <span class="read-time">8 min read</span>
+        </div>
+        <span class="w-card-arrow">&#8599;</span>
+      </div>
+      <div class="w-card-title">How I built a newsletter pipeline that fires 10,000+ tasks daily</div>
+      <div class="w-card-excerpt">A deep dive into the architecture behind Wokelo AI's daily and weekly newsletter system — Celery task orchestration, multi-layer insight generation, and what it takes to maintain a live system with a 15-minute hotfix SLA.</div>
+      <div class="w-card-tags">
+        <span class="w-tag">Celery</span>
+        <span class="w-tag">Django</span>
+        <span class="w-tag">LLMs</span>
+        <span class="w-tag">Architecture</span>
+      </div>
+    </div>
+
+    <div class="w-card" data-type="case-study" onclick="openPost('transaction-pipeline')">
+      <div class="w-card-top">
+        <div class="w-card-meta">
+          <span class="wc-badge badge-case">Case Study</span>
+          <span class="read-time">6 min read</span>
+        </div>
+        <span class="w-card-arrow">&#8599;</span>
+      </div>
+      <div class="w-card-title">Building an AI transaction detection pipeline with real-time WebSocket delivery</div>
+      <div class="w-card-excerpt">How I built the M&amp;A, IPO and fundraising detection system at Wokelo — from mapping companies to AI validation to live frontend updates.</div>
+      <div class="w-card-tags">
+        <span class="w-tag">AI Pipelines</span>
+        <span class="w-tag">WebSockets</span>
+        <span class="w-tag">Django</span>
+      </div>
+    </div>
+
+    <div class="w-card" data-type="article" onclick="openPost('api-performance')">
+      <div class="w-card-top">
+        <div class="w-card-meta">
+          <span class="wc-badge badge-article">Article</span>
+          <span class="read-time">4 min read</span>
+        </div>
+        <span class="w-card-arrow">&#8599;</span>
+      </div>
+      <div class="w-card-title">5x API performance — what actually worked</div>
+      <div class="w-card-excerpt">The specific ORM tricks, bulk operations and caching strategies that cut our API response times by 5x without a rewrite.</div>
+      <div class="w-card-tags">
+        <span class="w-tag">Django</span>
+        <span class="w-tag">PostgreSQL</span>
+        <span class="w-tag">Performance</span>
+      </div>
+    </div>
+
+    <div class="w-card soon" data-type="article">
+      <div class="w-card-top">
+        <div class="w-card-meta">
+          <span class="wc-badge badge-soon">Coming soon</span>
+        </div>
+      </div>
+      <div class="w-card-title">Pulse — building my personal AI news digest from scratch</div>
+      <div class="w-card-excerpt">Behind the scenes of building Pulse — Reddit, newsletters, Twitter and GitHub trending, deduplicated and filtered by interest.</div>
+      <div class="w-card-tags">
+        <span class="w-tag">Build in public</span>
+        <span class="w-tag">AI</span>
+      </div>
+    </div>
+
+    <div class="w-card soon" data-type="article">
+      <div class="w-card-top">
+        <div class="w-card-meta">
+          <span class="wc-badge badge-soon">Coming soon</span>
+        </div>
+      </div>
+      <div class="w-card-title">Vector databases explained through things I actually built</div>
+      <div class="w-card-excerpt">No theory — just the practical stuff. How embeddings, similarity search and RAG work when you're processing thousands of companies daily.</div>
+      <div class="w-card-tags">
+        <span class="w-tag">Vector DB</span>
+        <span class="w-tag">Embeddings</span>
+        <span class="w-tag">RAG</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- POST VIEW -->
+<div class="post-view" id="postView">
+  <button class="post-back" onclick="closePost()">&#8592; Back to writing</button>
+  <div id="postInner"></div>
+</div>
+
+<script>
+var posts = {
+  "newsletter-pipeline": {
+    badge: "Case Study", badgeClass: "badge-case", readTime: "8 min read",
+    title: "How I built a newsletter pipeline that fires 10,000+ tasks daily",
+    intro: "A deep dive into the architecture behind Wokelo AI's daily and weekly newsletter system — Celery task orchestration, multi-layer insight generation, and what it takes to maintain a live system with a 15-minute hotfix SLA.",
+    body: [
+      "<h2>The problem</h2>",
+      "<p>Every day, Wokelo AI needs to deliver intelligence to 100+ clients covering <strong>380+ companies</strong>. Every week that scales to <strong>7,000+ companies and industries</strong>. Each report requires scraping, processing, LLM insight generation, and delivery — all within a tight time window. A naive sequential loop would take hours.</p>",
+      "<div class='post-img'>[ Pipeline architecture diagram — add your own ]</div>",
+      "<h2>The architecture</h2>",
+      "<p>The core idea is a <strong>multi-layer Celery task graph</strong>. Instead of one big task per company, we break each company's processing into small independent units that run in parallel across workers.</p>",
+      "<ul><li>Layer 1 — Data ingestion: scrape news, fetch Crunchbase data, pull LinkedIn signals</li><li>Layer 2 — Insight generation: each runs an LLM prompt on a specific data slice</li><li>Layer 3 — Assembly: stitch insights into a Lexical report document</li><li>Layer 4 — Delivery: email, blob storage, socket notification</li></ul>",
+      "<div class='post-callout'><p>The weekly run fires <strong>10,000+ tasks</strong>. Each insight task is independently optimized to complete within 120 seconds — the whole pipeline runs well within the delivery window.</p></div>",
+      "<h2>Keeping it reliable</h2>",
+      "<p>A pipeline this size will fail. The question is how fast you detect and recover. I implemented <strong>Slack alerting at every layer</strong> — task failures, retries, timeouts all surface immediately. This is what made the 15-20 minute hotfix SLA achievable on a live system.</p>",
+      "<p>Incremental processing with <strong>binary search checkpointing</strong> means we never reprocess data we already have — critical for keeping vendor API costs under control at this scale.</p>",
+      "<div class='post-img'>[ Celery task flow diagram — add your own ]</div>",
+      "<h2>What I'd do differently</h2>",
+      "<p>More comprehensive task-level testing from day one. When you have 10,000+ tasks and a bug is deeply nested in a dependency chain, finding it under a live SLA is genuinely stressful. Tests would have caught most of those issues faster.</p>"
+    ].join("")
+  },
+  "transaction-pipeline": {
+    badge: "Case Study", badgeClass: "badge-case", readTime: "6 min read",
+    title: "Building an AI transaction detection pipeline with real-time WebSocket delivery",
+    intro: "How I built the M&A, IPO and fundraising detection system at Wokelo — from mapping companies to AI validation to live frontend updates.",
+    body: [
+      "<h2>What we needed to detect</h2>",
+      "<p>Wokelo's clients — VCs and PE firms — care deeply about three types of events: <strong>mergers and acquisitions, IPOs, and fundraising rounds</strong>. We needed a pipeline to automatically detect these from news and data sources, validate them, and surface them to users in real time.</p>",
+      "<div class='post-img'>[ Transaction detection flow diagram ]</div>",
+      "<h2>The pipeline stages</h2>",
+      "<ul><li>Ingest — pull from news APIs, RSS feeds and Crunchbase signals</li><li>Classify — use an LLM to identify the transaction type from raw text</li><li>Map — match the involved companies to our internal company database</li><li>Validate — a second LLM pass to verify the transaction details are accurate</li><li>Store — write to live tables with transaction metadata</li><li>Deliver — push to frontend via WebSocket so clients see updates without refreshing</li></ul>",
+      "<div class='post-callout'><p>The validation step was the most important addition. Without it, we had ~30% false positives. With it, accuracy jumped significantly — LLMs are great at extraction but need a verification pass for financial data.</p></div>",
+      "<h2>The WebSocket piece</h2>",
+      "<p>The final step uses a <strong>socket connection</strong> to push transaction data directly to the frontend the moment it's validated. This required careful coordination between Django backend, Celery workers, and the React frontend — the socket listener picks up from a live table that workers write to.</p>"
+    ].join("")
+  },
+  "api-performance": {
+    badge: "Article", badgeClass: "badge-article", readTime: "4 min read",
+    title: "5x API performance — what actually worked",
+    intro: "The specific ORM tricks, bulk operations and caching strategies that cut our API response times by 5x without a rewrite.",
+    body: [
+      "<h2>Where the time was going</h2>",
+      "<p>Before optimization, some of our Admin panel APIs were taking 3-4 seconds. Profiling revealed three culprits: <strong>N+1 queries, no bulk operations, and no caching on repeated reads.</strong></p>",
+      "<h2>Fix 1 — Kill N+1 queries</h2>",
+      "<p>Use <code>select_related()</code> for foreign keys and <code>prefetch_related()</code> for many-to-many. A single API call that was firing 200+ queries dropped to 3.</p>",
+      "<pre><code># Before\nfor c in Company.objects.all():\n    print(c.industry.name)  # N queries\n\n# After\nCompany.objects.select_related('industry').all()</code></pre>",
+      "<h2>Fix 2 — Bulk everything</h2>",
+      "<p>Switched from per-record saves to <code>bulk_create()</code> and <code>bulk_update()</code>. For pipelines writing hundreds of records, this alone gave a <strong>10x write speedup</strong>.</p>",
+      "<div class='post-callout'><p>Django's <code>bulk_create</code> with <code>update_conflicts=True</code> gives you upsert behaviour in one query instead of a loop of get-or-create calls. Massively underused.</p></div>",
+      "<h2>Fix 3 — Cache what doesn't change</h2>",
+      "<p>Some filter options were being fetched fresh on every request. We added <strong>Redis caching with a short TTL</strong> — instant responses for repeated reads with minimal staleness risk.</p>",
+      "<h2>Fix 4 — Maps not nested loops</h2>",
+      "<p>In Python-level data assembly, replacing nested loops with dictionary lookups made a meaningful difference for large datasets. O(n²) to O(n) in the hot path.</p>",
+      "<p>Combined, these four changes brought response times from ~3.5s to under 700ms — a <strong>5x improvement</strong> with zero schema changes or infrastructure upgrades.</p>"
+    ].join("")
+  }
+};
+
+function openPost(slug) {
+  var p = posts[slug];
+  if (!p) return;
+  document.getElementById("postInner").innerHTML =
+    '<div class="post-meta-row"><span class="wc-badge ' + p.badgeClass + '">' + p.badge + '</span><span class="read-time">' + p.readTime + '</span></div>' +
+    '<div class="post-hero">[ Hero image — replace with real screenshot ]</div>' +
+    '<h1 class="post-h1">' + p.title + '</h1>' +
+    '<p class="post-intro">' + p.intro + '</p>' +
+    '<div class="post-body">' + p.body + '</div>';
+  document.getElementById("listPage").classList.add("hidden");
+  document.getElementById("postView").classList.add("active");
+  window.scrollTo(0, 0);
+}
+
+function closePost() {
+  document.getElementById("listPage").classList.remove("hidden");
+  document.getElementById("postView").classList.remove("active");
+  window.scrollTo(0, 0);
+}
+
+function filterPosts(type, el) {
+  document.querySelectorAll(".tab").forEach(function(t) { t.classList.remove("active"); });
+  el.classList.add("active");
+  document.querySelectorAll(".w-card").forEach(function(card) {
+    if (type === "all") {
+      card.style.display = "";
+    } else {
+      card.style.display = card.getAttribute("data-type") === type ? "" : "none";
+    }
+  });
+}
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") closePost();
+});
+</script>
+</body>
+</html>
