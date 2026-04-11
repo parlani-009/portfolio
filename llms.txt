@@ -1,0 +1,113 @@
+# Rahul Parlani — Full Stack Engineer
+
+> Full stack engineer specializing in AI-powered pipelines, backend systems, and scalable distributed architecture. Based in Indore, India. Currently building at Wokelo AI.
+
+## About
+
+Rahul Parlani is a 24-year-old full stack engineer from India with 2.5+ years of production engineering experience. He started with MERN stack projects in college and moved deep into backend systems, AI pipelines, and distributed architecture. He works at the intersection of AI and scalable engineering.
+
+- **Portfolio:** https://dev.parlani.co
+- **GitHub:** https://github.com/parlani-009/
+- **LinkedIn:** https://www.linkedin.com/in/rahul-parlani-b02a0a226/
+- **Location:** Indore, India — open to remote worldwide
+
+---
+
+## Current Role
+
+**Full Stack Engineer @ Wokelo AI** (Mar 2024 – Present)
+Full-time, Indore, India
+
+### AI & Data Pipelines
+- Built and maintains a **daily newsletter pipeline** (380+ companies) and a **weekly pipeline** (7,000+ companies & industries), firing 10,000+ Celery tasks per run with each insight task completing within 120 seconds.
+- Built a **transaction detection pipeline** (M&A, IPO, fundraising) that maps relevant companies, validates data with AI, and surfaces results live via WebSockets.
+- Implemented **semantic news clustering** — groups company news by similarity and generates structured narrative insights using LLMs (Claude Sonnet).
+- Built a **Glassdoor pipeline** — scrapes vendor API data, generates AI-powered insights, runs incrementally via binary search to minimize vendor calls and avoid redundant processing.
+- Built an **RSS news scraping and tagging pipeline** — hits RSS feeds, persists content to DB, tags articles by news type with AI, and integrates Google RSS URL decoder.
+- Integrated **Datagardener** financial data for UK-based companies, processing and presenting structured financials inside the report system.
+- Developed a **quarterly Portfolio Digest pipeline** aggregating data from Crunchbase, LinkedIn, Glassdoor, and YouTube transcripts into structured Lexical reports delivered to clients.
+- Built a **YouTube pipeline** that sources articles for a query, scrapes transcripts, and generates positive/negative/most-discussed insights via multi-step AI orchestration.
+
+### Full Stack Development
+- Owned the **Sandbox internal tool** end-to-end (~95% of code) — 100+ high-performance Django APIs and a React frontend with dynamic JSON-driven form generation, used daily by the CS team.
+- Built a complex **Admin/Super Admin panel** with infinite scroll, clickable charts, advanced filtering/sorting, and high-volume ORM-optimized queries.
+- Implemented **Lexical-based filtering, sorting, and Ask AI** on reports — users can select any node and query it inline, similar to Notion AI.
+- Integrated **Mailchimp** template engine, **Pipedrive CRM** auto-fill (scrapes LinkedIn + Crunchbase on submit), **Affinity CRM webhooks**, and **Custify** views.
+- Built an **email manager** that sends emails on different triggers based on conditions via a task-based Celery approach across multiple PostgreSQL tables.
+- Built a **cron-based scheduler** capable of firing APIs, Celery tasks, and newsletters on custom analysis periods.
+
+### Performance & Ownership
+- Improved **API response times by 5×** through ORM query optimization, bulk operations, caching, and multithreading across distributed and non-distributed PostgreSQL deployments.
+- Implemented **Slack alerting, structured logging, and source traceability** across the codebase.
+- Refactored **core news tagging** to a new taxonomy across the entire codebase; implemented a credits system across all core report components.
+- Covered **50%+ of sprint deliverables** solo during team absences across a 10-person team; maintained production pipelines with **15–20 min hotfix SLAs**.
+
+**Tech used:** Python, Django, Celery, FastAPI, React, PostgreSQL, Redis, LLMs, Vector DB, Embeddings, Lexical, WebSockets, RSS
+
+---
+
+## Previous Experience
+
+**Software Engineer Intern @ Wokelo AI** (Nov 2023 – Mar 2024)
+- Built the initial **Market Mapping pipeline** using vector databases, embeddings, and AI to source and score companies from Crunchbase.
+- Developed **complex interactive charts** using Altair for company and market intelligence data.
+- Contributed to **React frontend development** — built UI components and resolved bugs.
+
+**Full Stack Developer Intern @ The Mango Jelly** (Jan 2023 – Mar 2023)
+- Designed data models and built RESTful API controllers in Node.js/Express.
+- Implemented JWT authentication and integrated Redis, Mailgun, and Google Analytics API.
+
+**Full Stack Developer Intern @ Meepleton Board Game Cafe** (Jul 2022 – Sep 2022)
+- Built a fully functional MERN stack website from scratch, hosted on Netlify and indexed on Google.
+- Built an admin panel with full CRUD, integrated Google Books API and Google Indexer API.
+- Implemented JWT auth and real-time features.
+
+---
+
+## Projects
+
+### Pulse *(In Progress)*
+Personal AI news briefing tool — aggregates dev newsletters, Reddit, Twitter/X, and GitHub Trending into one deduplicated, interest-filtered daily digest.
+- Ingests newsletters directly from your inbox from major tech newsletter providers.
+- Pulls from Reddit subreddits, Twitter/X dev accounts, and GitHub Trending — deduplicated and scored by relevance.
+- AI-powered insight extraction and summarization — surfaces what matters, filters noise.
+- Delivered as a clean daily digest.
+- **Tech:** Python, FastAPI, LLMs, Embeddings, Celery, PostgreSQL, Reddit API, Twitter API, React
+
+### Meepleton *(Live — https://meepleton.in)*
+Full-stack product for a board game café — interactive dashboard, invoice generator, CMS, role-based auth, real-time chat, and table reservation system.
+- Built with MERN stack; hosted on Netlify; indexed on Google.
+- JWT auth with role-based authorization for admins, sub-admins, and users.
+- Admin dashboard with Apex Charts, paginated product catalog with reviews and ratings.
+- Real-time chat via WebSockets and a live table reservation system.
+- Integrated Google Books API and Google Indexer API.
+- **Tech:** React, Node.js, Express, MongoDB, JWT, WebSockets, Apex Charts, Netlify, Google API
+
+---
+
+## Skills & Technologies
+
+**Backend:** Python, Django & Django ORM, PostgreSQL, REST API Development, FastAPI, Redis
+
+**AI & Pipelines:** LLM Orchestration & Prompt Engineering, AI-powered Data Pipelines, Vector Databases & Embeddings, Celery, Semantic Search, RAG
+
+**Frontend:** React, Lexical Editor, TypeScript
+
+**Scalability:** Performance Optimization, ORM Tuning, Bulk Operations, Caching, Multithreading, Distributed Systems
+
+---
+
+## Writing
+
+Blog and technical writing available at: https://dev.parlani.co/writing.html
+
+---
+
+## Contact & Availability
+
+Rahul is open to full-time roles, freelance projects, and interesting conversations.
+
+- **Email:** Available via contact form at https://dev.parlani.co
+- **LinkedIn:** https://linkedin.com/in/rahul-parlani-b02a0a226
+- **GitHub:** https://github.com/parlani-009/
+- **Personal site:** https://parlani.co
